@@ -62,6 +62,42 @@ RSpec.describe AddressBook do
           end
       end
 
+
+      describe "imports from entries_2.csv" do
+          it "imports the correct number of entries" do
+              book.import_from_csv("entries_2.csv")
+              expect(book.entries.size).to eq 4
+          end
+
+          it "imports the 1st entry" do
+            book.import_from_csv("entries_2.csv")
+            entry_one = book.entries[0]
+            check_entry(entry_one, "Bill", "555-555-4854", "bill@blocmail.com")
+
+            end
+
+            it "imports the 2nd entry" do
+             book.import_from_csv("entries_2.csv")
+             entry_two = book.entries[1]
+             check_entry(entry_two, "Bob", "555-555-5415", "bob@blocmail.com")
+           end
+
+           it "imports the 3rd entry" do
+             book.import_from_csv("entries_2.csv")
+             entry_three = book.entries[2]
+             check_entry(entry_three, "Joe", "555-555-3660", "joe@blocmail.com")
+           end
+
+           it "imports the 4th entry" do
+             book.import_from_csv("entries_2.csv")
+             entry_four = book.entries[3]
+             check_entry(entry_four, "Sally", "555-555-4646", "sally@blocmail.com")
+           end
+
+      end
+
+
+
   describe "#add_entry" do
       it "adds only one entry to the address book" do
 
@@ -81,18 +117,18 @@ RSpec.describe AddressBook do
       end
     end
 
+    # Test that AddressBook's .import_from_csv() method is working as expected
+    describe "#import_from_csv" do
+      it "imports the correct number of entries" do
 
-   # Test that AddressBook's .import_from_csv() method is working as expected
-   describe "#import_from_csv" do
-     it "imports the correct number of entries" do
+        book.import_from_csv("entries.csv")
+        book_size = book.entries.size
 
-       book.import_from_csv("entries.csv")
-       book_size = book.entries.size
+              # Check the size of the entries in AddressBook
+              expect(book_size).to eq 5
+            end
+       end
 
-             # Check the size of the entries in AddressBook
-             expect(book_size).to eq 5
-           end
-      end
 
 
   end
