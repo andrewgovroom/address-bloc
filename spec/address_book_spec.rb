@@ -142,10 +142,18 @@ RSpec.describe AddressBook do
            entry = book.binary_search("Billy")
            expect(entry).to be_nil
         end
-
-
-
     end
+
+      describe "#demolish" do
+        it "deletes all entries" do
+            book.add_entry('Andrew Lau', '111.111.1111', 'andrew@bloc.com')
+            book.add_entry('Robert Firestone', '222.222.2222', 'robert@bloc.com')
+            book.add_entry('Linda Ly', '333.333.3333', 'linda@bloc.com')
+            book.add_entry('Jonna Smith', '444.444.4444', 'andrew@bloc.com')
+            book.demolish
+            expect(book.entries.size).to eq 0
+        end
+      end
 
 
   end
